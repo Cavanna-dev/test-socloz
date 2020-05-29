@@ -12,7 +12,7 @@ class StatisticsTest extends TestCase
     /**
      * @dataProvider updateData
      */
-    public function testUpdateOk(
+    public function testUpdate(
         array $stores,
         int $skuId,
         int $quantity,
@@ -42,19 +42,9 @@ class StatisticsTest extends TestCase
     public function updateData(): array
     {
         return [
-            'ok' => [$this->generateStores(1), 1, 1, 1, 1, 1, 1, 1],
-            'division_by_zero' => [$this->generateStores(1), 1, 0, 1, 1, 0, 0, 0],
-            'quantity_zero_for_rate_compute' => [$this->generateStores(5), 1, 0, 5, 1, 0, 0, 0],
+            'ok' => [DataGenerator::generateStores(1), 1, 1, 1, 1, 1, 1, 1],
+            'division_by_zero' => [DataGenerator::generateStores(1), 1, 0, 1, 1, 0, 0, 0],
+            'quantity_zero_for_rate_compute' => [DataGenerator::generateStores(5), 1, 0, 5, 1, 0, 0, 0],
         ];
-    }
-
-    private function generateStores(int $number): array
-    {
-        $stores = [];
-        for ($i = 0; $i < $number; $i++) {
-            $stores[] = new Store($i);
-        }
-
-        return $stores;
     }
 }

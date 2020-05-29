@@ -11,7 +11,7 @@ class StoreCollectionTest extends TestCase
     public function testCount(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(5) as $store) {
+        foreach (DataGenerator::generateStores(5) as $store) {
             $storeCollection->add($store);
         }
 
@@ -21,7 +21,7 @@ class StoreCollectionTest extends TestCase
     public function testAdd(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(5) as $store) {
+        foreach (DataGenerator::generateStores(5) as $store) {
             $storeCollection->add($store);
         }
 
@@ -34,7 +34,7 @@ class StoreCollectionTest extends TestCase
     public function testGet(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(5) as $store) {
+        foreach (DataGenerator::generateStores(5) as $store) {
             $storeCollection->add($store);
         }
 
@@ -44,7 +44,7 @@ class StoreCollectionTest extends TestCase
     public function testGetInexistingStore(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(5) as $store) {
+        foreach (DataGenerator::generateStores(5) as $store) {
             $storeCollection->add($store);
         }
 
@@ -55,7 +55,7 @@ class StoreCollectionTest extends TestCase
     public function testExists(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(5) as $store) {
+        foreach (DataGenerator::generateStores(5) as $store) {
             $storeCollection->add($store);
         }
 
@@ -66,20 +66,10 @@ class StoreCollectionTest extends TestCase
     public function testToArray(): void
     {
         $storeCollection = new StoreCollection();
-        foreach ($this->generateStores(2) as $store) {
+        foreach (DataGenerator::generateStores(2) as $store) {
             $storeCollection->add($store);
         }
 
         self::assertCount(2, $storeCollection->toArray());
-    }
-
-    private function generateStores(int $number): array
-    {
-        $stores = [];
-        for ($i = 0; $i < $number; $i++) {
-            $stores[] = new Store($i);
-        }
-
-        return $stores;
     }
 }
