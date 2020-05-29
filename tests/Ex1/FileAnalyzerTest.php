@@ -27,17 +27,15 @@ class FileAnalyzerTest extends TestCase
                         $store,
                         $sku,
                         max(0, (int) self::gaussianRand(5, 3))
-                    ]) . "\n");
+                    ]) . PHP_EOL);
                 }
             }
 
             fclose($fp);
         }
 
-        $fileAnalyzer = new FileAnalyzer();
-
         $startMem = memory_get_peak_usage(false);
-        $stats = $fileAnalyzer->generateStats($dataFileName);
+        $stats = FileAnalyzer::generateStats($dataFileName);
         $endMem = memory_get_peak_usage(false);
 
         $expectedStatsFileName = dirname(__FILE__) . '/expected_stats.json';
