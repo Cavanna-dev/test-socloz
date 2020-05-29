@@ -39,11 +39,11 @@ class StoreCollection implements \Countable
 
     public function toArray(): array
     {
-        $builtArray = [];
+        $storesArray = [];
         foreach ($this->stores as $store) {
-            $builtArray[$store->getId()] = $store->toArray();
+            $storesArray[$store->getId()] = $store->toArray();
         }
 
-        return $builtArray;
+        return $storesArray;
     }
 }
